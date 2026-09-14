@@ -373,7 +373,36 @@
       </div>
 
       <p class="closing-line">Knew you'd come around. Let's celebrate 51 years of PNG together — see you at the celebration!</p>
-      <p class="signoff">Larem Kumul fly. One nation, One people, One future!</p>
+      <p>Larem Kumul fly. One nation, One people, One future!</p>
+
+      <!-- The Share Button -->
+<button id="shareBtn">Share</button>
+
+<script>
+  const shareBtn = document.getElementById('shareBtn');
+
+  shareBtn.addEventListener('click', async () => {
+    // Check if the browser supports the native Web Share API
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Check this out!',
+          text: 'Here is an awesome website you should see.',
+          url: window.location.href // Automatically gets the current page link
+        });
+        console.log('Shared successfully');
+      } catch (error) {
+        console.log('Error sharing:', error);
+      }
+    } else {
+      // Fallback for older browsers or desktop browsers that don't support it
+      alert("Sharing is not supported on this browser. Copy the URL instead: " + window.location.href);
+    }
+  });
+</script>
+
+
+
       <p class="signoff"> by <i>ALien Lord</i></p>
     </div>
   </section>
